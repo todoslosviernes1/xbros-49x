@@ -1,0 +1,6 @@
++13
+
+  "/images/bg/fondo1.webp",  "/images/bg/fondo2.webp",  "/images/bg/fondo3.webp",  "/images/bg/fondo4.webp",   "/images/bg/pre1.webp",  "/images/bg/pre2.webp", 
+  "/images/bg/pre3.webp",  "/images/bg/rrss1.webp",   "/images/bg/rrss2.webp", 
+  "/images/bg/rrss3.webp",  "/images/bg/rrss4.webp",  "/images/bg/web.png", 
+  "/images/bg/web1.png", 
