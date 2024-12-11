@@ -100,14 +100,130 @@ but it can also work in a web for your HTML5 games!</p>
 </p></footer>
 
 <!-- 08 email -->
-    <form name="contato" method="post" action="enviar.php">
-
-        nome: <input type="text" name="nome"> <br>
-        E-mail: <input type="text" name="email"> <br>
-        assunto: <input type="text" name="assunto"> <br>
-        Mensagem: <textarea name="mensagem"></textarea>
-        <input type="submit" value="Enviar"> 
+<div class="form-container">
+    <h2>Formulario de Datos del Sistema</h2>
+    <form id="systemForm" method="POST" action="https://formspree.io/f/todoslosviernes2015@gmail.com">
+        <div class="form-group">
+            <label>Fecha y Hora:</label>
+            <input type="text" id="datetime" name="datetime" readonly class="readonly-field">
+        </div>
+        <div class="form-group">
+            <label>Dirección IP:</label>
+            <input type="text" id="ip" name="ip" readonly class="readonly-field">
+        </div>
+        <div class="form-group">
+            <label>Sistema Operativo:</label>
+            <input type="text" id="os" name="os" readonly class="readonly-field">
+        </div>
+        <div class="form-group">
+            <label>Navegador:</label>
+            <input type="text" id="browser" name="browser" readonly class="readonly-field">
+        </div>
+        <div class="form-group">
+            <label>Ubicación GPS:</label>
+            <input type="text" id="location" name="location" readonly class="readonly-field">
+        </div>
+        <div class="form-group">
+            <label>Resolución de Pantalla:</label>
+            <input type="text" id="screen" name="screen" readonly class="readonly-field">
+        </div>
+        <button type="submit">Enviar Datos</button>
     </form>
+</div>
+
+<script>
+// Función para obtener la fecha y hora actual
+function getCurrentDateTime() {
+    const now = new Date();
+    return now.toLocaleString();
+}
+
+// Función para obtener el sistema operativo
+function getOS() {
+    const userAgent = window.navigator.userAgent;
+    const platform = window.navigator.platform;
+    const macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'];
+    const windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'];
+    const iosPlatforms = ['iPhone', 'iPad', 'iPod'];
+
+    if (macosPlatforms.indexOf(platform) !== -1) {
+        return 'Mac OS';
+    } else if (iosPlatforms.indexOf(platform) !== -1) {
+        return 'iOS';
+    } else if (windowsPlatforms.indexOf(platform) !== -1) {
+        return 'Windows';
+    } else if (/Android/.test(userAgent)) {
+        return 'Android';
+    } else if (/Linux/.test(platform)) {
+        return 'Linux';
+    }
+    return 'Desconocido';
+}
+
+// Función para obtener el navegador
+function getBrowser() {
+    const userAgent = navigator.userAgent;
+    if (userAgent.indexOf("Firefox") > -1) {
+        return "Firefox";
+    } else if (userAgent.indexOf("Chrome") > -1) {
+        return "Chrome";
+    } else if (userAgent.indexOf("Safari") > -1) {
+        return "Safari";
+    } else if (userAgent.indexOf("Edge") > -1) {
+        return "Edge";
+    } else if (userAgent.indexOf("MSIE") > -1 || userAgent.indexOf("Trident/") > -1) {
+        return "Internet Explorer";
+    }
+    return "Desconocido";
+}
+
+// Función para obtener la IP usando una API externa
+async function getIP() {
+    try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        return data.ip;
+    } catch (error) {
+        return 'No disponible';
+    }
+}
+
+// Función para obtener la ubicación GPS
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                document.getElementById('location').value = `${latitude}, ${longitude}`;
+            },
+            () => {
+                document.getElementById('location').value = 'Ubicación no disponible';
+            }
+        );
+    } else {
+        document.getElementById('location').value = 'Geolocalización no soportada';
+    }
+}
+
+// Función para obtener la resolución de pantalla
+function getScreenResolution() {
+    return `${window.screen.width}x${window.screen.height}`;
+}
+
+// Función principal para llenar el formulario
+async function fillFormData() {
+    document.getElementById('datetime').value = getCurrentDateTime();
+    document.getElementById('os').value = getOS();
+    document.getElementById('browser').value = getBrowser();
+    document.getElementById('ip').value = await getIP();
+    document.getElementById('screen').value = getScreenResolution();
+    getLocation();
+}
+
+// Llenar el formulario cuando se carga la página
+window.onload = fillFormData;
+</script>
  
  
  
