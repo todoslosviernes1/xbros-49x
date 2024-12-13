@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $mail->SMTPAuth = true;
   $mail->Username = $smtpUsername;
   $mail->Password = $smtpPassword;
-  $mail->SMTPSecure = 'tls';
+  $mail->SMTPSecure = 'ssl';
 
   // Información del correo
   $mail->setFrom($correo, $nombre);
