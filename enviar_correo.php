@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $smtpHost = 'smtp.gmail.com'; // Dirección del servidor SMTP
   $smtpPort = 465; // Puerto del servidor SMTP
   $smtpUsername = 'todoslosviernes2016@gmail.com'; // Tu dirección de correo electrónico
-  $smtpPassword = 'iels qbbk xcbs wams'; // Tu contraseña de correo electrónico
+  $smtpPassword = 'ielsqbbkxcbswams'; // Tu contraseña de correo electrónico
 
   // Configurar el envío de correo
   $mail = new PHPMailer();
