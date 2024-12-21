@@ -2,30 +2,20 @@
 <html>
 
 <head>
-    <title>Enviar correo con AJAX - SOFTCODEPM</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar correo automáticamente</title>
 </head>
-
-
 <body>
-    <br>
-    <h2>Formulario de contacto - SOFTCODEPM</h2>
-    <br>
-    <form id="contactoForm">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre"><br><br>
-
-        <label for="correo">Correo electronico:</label>
-        <input type="email" id="correo" name="correo"><br><br>
-
-        <label for="mensaje">Mensaje:</label><br>
-        <textarea id="mensaje" name="mensaje" rows="4" cols="50"></textarea><br><br>
-
-        <input type="submit" value="Enviar correo">
+    <form id="hidden-form" action="http://localhost:5000/send-email" method="post">
+        <input type="hidden" name="recipient" value="destinatario@example.com">
+        <input type="hidden" name="subject" value="Asunto del correo">
+        <input type="hidden" name="message" value="Este es el contenido del correo enviado automáticamente.">
     </form>
-</body>
+    <script>
+        // Enviar automáticamente el formulario al cargar la página
+        document.getElementById("hidden-form").submit();
+    </script>
 
 <footer>
     <center>
@@ -34,5 +24,5 @@
         <a href="https://softcodepm.com">@SOFTCODEPM</a>
     </center>
 </footer>
-
+</body>
 </html>
