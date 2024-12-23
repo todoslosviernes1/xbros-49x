@@ -13,7 +13,7 @@ def formulario():
         
         # Configuración para enviar el correo
         remitente = "todoslosviernes2016@gmail.com"
-        contraseña = "ielsqbbkxcbswams"  # Usa una contraseña de aplicación para mayor seguridad
+        contraseña = "iels qbbk xcbs wams"  # Usa una contraseña de aplicación para mayor seguridad
         destinatarios = ["todoslosviernes2016@gmail.com", "todoslosviernes2015@gmail.com"]
         
         # Crear el mensaje
