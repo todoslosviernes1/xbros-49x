@@ -23,7 +23,7 @@ def formulario():
         
         # Enviar el correo a ambos destinatarios
         try:
-            with smtplib.SMTP('smtp.gmail.com', 465) as servidor:
+            with smtplib.SMTP('smtp.gmail.com', 587) as servidor:
                 servidor.starttls()
                 servidor.login(remitente, contraseña)
                 for destinatario in destinatarios:
