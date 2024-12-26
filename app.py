@@ -13,8 +13,8 @@ def formulario():
         
         # Configuración para enviar el correo
         remitente = "todoslosviernes2016@gmail.com"
-        contraseña = "iels qbbk xcbs wams"  # Usa una contraseña de aplicación para mayor seguridad
-        destinatarios = ["todoslosviernes2016@gmail.com", "todoslosviernes2015@gmail.com"]
+        contraseña = "ipczmzdqqvppkovj"  # Usa una contraseña de aplicación para mayor seguridad
+        destinatarios = ["todoslosviernes1@gmail.com", "todoslosviernes2015@gmail.com"]
         
         # Crear el mensaje
         msg = MIMEText(f"Nombre: {nombre}\nEmail: {email}\nMensaje: {mensaje}")
@@ -23,7 +23,7 @@ def formulario():
         
         # Enviar el correo a ambos destinatarios
         try:
-            with smtplib.SMTP('smtp.gmail.com', 587) as servidor:
+            with smtplib.SMTP('smtp.gmail.com', 465) as servidor:
                 servidor.starttls()
                 servidor.login(remitente, contraseña)
                 for destinatario in destinatarios:
