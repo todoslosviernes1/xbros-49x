@@ -1,4 +1,4 @@
-from flask import Flask, render_templates('formulario.html')
+from flask import Flask, render_template('formulario.html')
 import smtplib
 from email.mime.text import MIMEText
 
